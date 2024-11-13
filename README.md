@@ -99,6 +99,10 @@ async function getData() {
 
 ## The Proposed Solution
 
+Example parsing implemented in TypeScript: 
+
+https://github.com/Arlen22/TypeScript/tree/arlen22-0.2
+
 ### The try expression
 
 ```ts
