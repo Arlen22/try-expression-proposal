@@ -2,7 +2,7 @@
 
 _Handling JSON.parse with less code._
 
-Extends the `try` keyword to support for expressions, returning a tuple of [error, result] instead of throwing an error or using a catch statement.
+Extends the `try` keyword to support for expressions, returning a tuple of `[error, result]` instead of throwing an error or using a catch statement.
 
 ## Status
 
@@ -14,9 +14,9 @@ Extends the `try` keyword to support for expressions, returning a tuple of [erro
 
 The try...catch statement is used frequently in all areas of Javascript, but the lack of support for expressions requires continuous workarounds in user code.
 
-The most common methods are either error-prone or require awkward syntax structures. `JSON.parse` may be the most obvious example. A `JSON.parse` call requires a minimum of 2 lines, and to be properly readable, 6 lines.
+The most common methods are either error-prone or require awkward syntax structures. `JSON.parse` may be the most obvious example. A `JSON.parse` call requires a minimum of 2 lines, and to be properly readable, 6-8 lines.
 
-Another very common use-case is catching errors from awaited promises, especially promises from file system or database calls, where errors often have direct bearing on your next step. Add a generic catch statement after every database call just to marshal the error back into your code is fairly easy, but it's still extra code that has to be documented and double-checked next time you want to use it for something else.
+Another very common use-case is catching errors from awaited promises, especially promises from file system or database calls, where errors often have direct bearing on your next step. Add a generic catch statement after every database call just to marshal the error back into your code is fairly easy, but it's still extra code that has to be documented and double-checked. And do you remember exactly what it does?
 
 And that only works for async functions. Functions which return their value directly have no such equivelant feature and must at least use a helper function to catch errors. And then you have to include it in every file and you have to remember the exact syntax, and sometimes it's easier to just not use it, but then you lose the benefit of checking for an error.
 
@@ -435,7 +435,7 @@ This approach is much more explicit and readable because it acknowledges that th
 
 ### `await try` expression
 
-The `await` keyword can only be used with a Promise, and the `try` expression does not return a Promise. Putting `await` in front of a `try` expression would have no effect. This should be a linter error.
+The `await` keyword can only be used with a Promise, and the `try` expression does not return a Promise. Putting `await` in front of a `try` expression would have no semantic effect.
 
 ### No catch statement
 
@@ -473,4 +473,4 @@ try {
 
 - [Arthur Fiorette's Safe Assignment Operator Proposal](https://github.com/arthurfiorette/proposal-safe-assignment-operator)
 
-I was going to help him out by rewriting the proposal around the Try Expression, which he already said he wanted to do, but the entire thing was so different that I decided to make my own proposal. However, a lot of the discussions there contributed to this proposal.
+I was going to help him out by rewriting his proposal around the Try Expression, which he already said he wanted to do, but the entire thing was so different that I decided to make my own proposal. However, a lot of the discussions there contributed to this proposal.
